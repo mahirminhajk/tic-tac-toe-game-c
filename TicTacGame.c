@@ -23,6 +23,7 @@ int main()
     while (winner == ' ' && checkFreeSpaces() != 0)
     {
         printBoard();
+        playerMove();
     }
 
     return 0;
@@ -64,6 +65,28 @@ int checkFreeSpaces()
 }
 void playerMove()
 {
+    int x;
+    int y;
+
+    do
+    {
+        printf("Enter row #(1-3): ");
+        scanf("%d", &x);
+        x--; // if user input row 3 then x-1 = 2(3 is 2 index)
+        printf("Enter column #(1-3): ");
+        scanf("%d", &y);
+        y--;
+
+        if (board[x][y] != ' ')
+        {
+            printf("Invalid move!\n");
+        }
+        else
+        {
+            board[x][y] = PLAYER;
+            break;
+        }
+    } while (board[x][y] != ' ');
 }
 void computerMove()
 {
